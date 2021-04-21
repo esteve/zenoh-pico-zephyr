@@ -4,16 +4,17 @@
 #include <string.h>
 #include <zenoh-pico.h>
 
+#define ZENOH_ROUTER_PORT "7447"
+#define ZENOH_ROUTER_ADDR CONFIG_NET_CONFIG_PEER_IPV4_ADDR
+#define ZENOH_LOCATOR "tcp/" ZENOH_ROUTER_ADDR ":" ZENOH_ROUTER_PORT
+
 int main(int argc, char **argv)
 {
     char *uri = "/demo/example/zenoh-pico-pub";
     char *value = "Pub from pico!";
 
     zn_properties_t *config = zn_config_default();
-    if (argc > 3)
-    {
-        zn_properties_insert(config, ZN_CONFIG_PEER_KEY, z_string_make(argv[3]));
-    }
+    zn_properties_insert(config, ZN_CONFIG_PEER_KEY, z_string_make(ZENOH_LOCATOR));
 
     printf("Opening session...\n");
     zn_session_t *s = zn_open(config);
