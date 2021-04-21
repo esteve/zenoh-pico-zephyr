@@ -1,11 +1,3 @@
-/*
- * Copyright (c) 2017 Intel Corporation
- *
- * SPDX-License-Identifier: Apache-2.0
- */
-
-/* hello world example: calling functions from a static library */
-
 #include <zephyr.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -15,15 +7,7 @@
 int main(int argc, char **argv)
 {
     char *uri = "/demo/example/zenoh-pico-pub";
-    if (argc > 1)
-    {
-        uri = argv[1];
-    }
     char *value = "Pub from pico!";
-    if (argc > 2)
-    {
-        value = argv[2];
-    }
 
     zn_properties_t *config = zn_config_default();
     if (argc > 3)
