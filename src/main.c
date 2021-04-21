@@ -21,7 +21,7 @@ int main(int argc, char **argv)
     if (s == 0)
     {
         printf("Unable to open session!\n");
-        exit(-1);
+        _exit(-1);
     }
 
     // Start the receive and the session lease loop for zenoh-pico
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     if (pub == 0)
     {
         printf("Unable to declare publisher.\n");
-        exit(-1);
+        _exit(-1);
     }
 
     char buf[256];
